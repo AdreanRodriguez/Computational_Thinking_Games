@@ -223,9 +223,47 @@ ELSE
     PRINT "Spelare 2 vann matchen!";
 */
 
+/*
+let playerOneScore = 0;
+let playerTwoScore = 0;
 
+while (playerOneScore < 3 && playerTwoScore < 3) {
+    let playerOneChoice = window.prompt(`Spelare ett, välj mellan att skriva: Sten, Sax eller Påse`);
+    
+    // Översätt spelarens val till motsvarande nummer
+    let playerOneNumber;
+    if (playerOneChoice.toLowerCase() === "sten") {
+        playerOneNumber = 0;
+    } else if (playerOneChoice.toLowerCase() === "sax") {
+        playerOneNumber = 1;
+    } else if (playerOneChoice.toLowerCase() === "påse") {
+        playerOneNumber = 2;
+    } else {
+        console.log("Ogiltigt val. Försök igen.");
+        continue; // Gå till nästa iteration av loopen om valet är ogiltigt
+    }
 
+    let playerTwoChoice = Math.floor(Math.random() * 3);
 
+    if (playerOneChoice === playerTwoChoice) {
+        console.log(`Det blev lika`);
+    } else if ((playerOneNumber === 0 && playerTwoChoice === 1) ||
+               (playerOneNumber === 1 && playerTwoChoice === 2) ||
+               (playerOneNumber === 2 && playerTwoChoice === 0)) {
+        playerOneScore++;
+        console.log(`Spelare 1 vann!`);
+    } else {
+        playerTwoScore++;
+        console.log(`Spelare 2 vann!`);
+    }
+}
+
+if (playerOneScore === 3) {
+    console.log(`Spelare 1 vann matchen!`);
+} else {
+    console.log(`Spelare 2 vann matchen!`);
+}
+*/
 
 
 
@@ -248,6 +286,19 @@ FOR (loopa igenom talen 1-100)
         PRINT "Buzz";
 */
 
+/*
+for (let i = 0; i < 101; i++) {
+    if (i % 3 === 0 && i % 5 === 0) { 
+        console.log(`FizzBuzz`); 
+    } else if (i % 3 === 0) {
+        console.log(`Fizz`)
+    } else if (i % 5 === 0) {
+        console.log(`Buzz`)
+    } else {
+        console.log(i)
+    }
+}
+*/
 
 
 
