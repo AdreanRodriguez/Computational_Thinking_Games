@@ -1,23 +1,60 @@
-/* Ett tärningspel där användaren ska kasta 1st tärning. 
+/* 
+STEGEN
+
+Ett tärningspel där användaren ska kasta 1st tärning. 
 Vid första kastet ska målet vara 1. Om 1 ej fås, ska man 
 försöka igen. Hur många kast tar det för att komma upp i en 
-stege, 1,2,3,4,5,6? */
+stege, 1,2,3,4,5,6? 
 
-// let goal = 1;
-// let nmbrOfThrows = 0;
 
-// while(goal < 7) {
-//     let dice = Math.floor(Math.random() * 6 + 1);
-//     console.log('Du kastade ' + dice);
-//     nmbrOfThrows++;
-//     if(dice === goal) {
-//         goal++;
-//         console.log('Snyggt! du kastade rätt!');
-//     }
-// }
+anropa funktionen play();
 
-// console.log('Grattis du vann på ' + nmbrOfThrows + ' antal kast!');
+function play()
+    SET variabel goal till 1;
+    SET variabel nmbrOfThrows till 0;
+
+    while goal är mindre än 7
+        SET variabel throw till returen från throwDice();
+        öka på nmbrOfThrows med 1;
+        if throw är lika med goal
+            öka på goal med 1;
+        end if
+    end while
+    PRINT "Grattis du klarade stegen på " + nmbrOfThrows + " kast!";
+end function
+
+function throwDice()
+    SET variabel dice till slumpat tal (1-6);
+    RETURN dice;
+end function
+*/
+
+
+
 /*
+let goal = 1;
+let nmbrOfThrows = 0;
+
+while(goal < 7) {
+    let dice = Math.floor(Math.random() * 6 + 1);
+    console.log('Du kastade ' + dice);
+    nmbrOfThrows++;
+    if(dice === goal) {
+        goal++;
+        console.log('Snyggt! du kastade rätt!');
+    }
+}
+
+console.log('Grattis du vann på ' + nmbrOfThrows + ' antal kast!');
+*/
+
+
+
+
+
+/*
+KNOCK OUT
+
 Spelet har 2st tärningar.
 Du som spelare väljer ett “knock out number” – antingen 6, 7, 8, eller 9.
 Du som spelare väljer också vilken poäng som skall uppnås för att spelet skall avslutas.
@@ -25,6 +62,7 @@ Spelaren kastar båda tärningarna. Anteckna varje kasts resultat.
 Om spelaren kastar något utav "knock out numbers" ges minuspoäng
 */
 
+/*
 let score = 0;
 let knockOutNmbr = 0;
 let goal = 0;
@@ -59,91 +97,23 @@ while(score < goal) {
     }
     console.log('Din totala poäng är nu ' + score + '/' + goal);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Stegen */
 /*
-anropa funktionen play();
 
-function play()
-    SET variabel goal till 1;
-    SET variabel nmbrOfThrows till 0;
 
-    while goal är mindre än 7
-        SET variabel throw till returen från throwDice();
-        öka på nmbrOfThrows med 1;
-        if throw är lika med goal
-            öka på goal med 1;
-        end if
-    end while
-    PRINT "Grattis du klarade stegen på " + nmbrOfThrows + " kast!";
-end function
 
-function throwDice()
-    SET variabel dice till slumpat tal (1-6);
-    RETURN dice;
-end function
+
+
+/* GOING TO BOSTON 
+
+Spelet har 3st tärningar.
+
+Kasta tärningarna och spara tärningen med högsta värdet.
+Kasta de kvarvarande 2 och spara tärningen med högsta värdet.
+Kasta sista tärningen och summera samtliga tre tärningar.
+Spelaren med högst summerat värde vinner. Max poäng är 18.
+
 */
 
-/* Knock out */
-/*
-play();
-
-function play()
-    Sätt variabeln inputApproved till false;
-    Sätt variabeln totalScore till 0;
-    Sätt variabeln knockOutNmbr till 0;
-    Sätt variabeln goalNmbr till 0;
-
-    MEDANS inputApproved är false
-        Tilldela variabeln knockOutNmbr input från användaren (6-9);
-        Tilldela variabeln goalNmbr input från användaren;
-
-        OM knockOutNmbr är större än 5 OCH mindre än 10
-            OM goalNumber är större än 0
-                inputApproved tilldelas true; // OM vi lyckas komma ner hit så bryts loopen
-    
-    MEDANS totalscore är mindre än goalNmbr
-        Sätt variabeln diceOne till returen från throwDice();
-        Sätt variabeln diceTwo till returen från throwDice();
-        Sätt variabeln sum till diceOne + diceTwo;
-
-        OM sum är lika med knockOutNmbr
-            totalscore minskas med 3;
-        ANNARS
-            totalScore ökas med sum;
-
-        SKRIV UT "Denna runda kastade du { diceOne } och { diceTwo }, summan blev { sum }";
-        SKRIV UT "Poängställning: { totalScore }/{ goalNmbr }";
-    SKRIV UT "Grattis du har vunnit!";
-
-function throwDice()
-    SET variabel dice till slumpat tal (1-6);
-    RETURN dice;
-*/
-
-/* Going to Boston */
 /*
 play();
 
@@ -180,7 +150,50 @@ function play()
 end function
 */
 
-/* Sten, Sax, Påse */
+/*
+play()
+
+function play() {
+    let diceOne = Math.floor(Math.random() * 6 + 1);
+    let diceTwo = Math.floor(Math.random() * 6 + 1);
+    let diceThree = Math.floor(Math.random() * 6 + 1);
+    let score = 0;
+
+    if (diceOne > diceTwo && diceOne > diceThree) {
+        score = diceOne;
+    } else if (diceTwo > diceOne && diceTwo > diceThree) {
+        score = diceTwo;
+    } else {
+        score = diceThree;
+    }
+
+    diceOne = Math.floor (Math.random() * 6 + 1);
+    diceTwo = Math.floor (Math.random() * 6 + 1);
+
+    if (diceOne > diceTwo) {
+        score += diceOne;
+    } else {
+        score += diceTwo;
+    }
+
+    diceOne = Math.floor (Math.random() * 6 + 1);{
+        score += diceOne   
+    }
+    
+    console.log(`Dina tärningar visade totalt ${score} poäng`)
+}
+*/
+
+
+
+
+
+/* STEN, SAX, PÅSE 
+
+Pseudokod för det klassiska spelet sten, sax och påse. 
+Först till 3 vinster vinner!
+*/
+
 /*
 SET playerOneScore = 0;
 SET playerTwoScore = 0;
@@ -210,7 +223,21 @@ ELSE
     PRINT "Spelare 2 vann matchen!";
 */
 
-/* FizzBuzz */
+
+
+
+
+
+
+/* FIZZBUZZ 
+
+Loopa igenom hundra nummer och om:
+
+Numret är dividerbart med 3, skriv ut "Fizz"
+Numret är dividerbart med 5, skriv ut "Buzz"
+Numret är dividerbart med 3 och 5, skriv ut "FizzBuzz"
+*/
+
 /*
 FOR (loopa igenom talen 1-100)
     IF( talet är jämnt delbart med 3 OCH talet är jämnt delbart med 5 ) // talet % 3 === 0 && talet % 5 === 0
@@ -221,7 +248,18 @@ FOR (loopa igenom talen 1-100)
         PRINT "Buzz";
 */
 
-/* Högt eller lågt */
+
+
+
+
+/* HÖGT ELLER LÅGT
+
+Fråga användaren efter ett tal mellan 1 och 100. 
+Programmet ska ha ett hemligt tal sparat. 
+Det ska fortsätta fråga användaren till dess att användaren gissar det hemliga talet. 
+Om man gissade för högt eller för lågt så ska det skrivas ut, så att användaren har en rimlig chans att klara det.
+*/
+
 /*
 play();
 function play()
@@ -252,7 +290,15 @@ function controlInput(input)
         RETURN false;
 */
 
-/* Söka efter likheter mellan ord */
+
+
+
+
+/* Söka efter likheter mellan ord 
+
+Fråga användaren efter två ord, och kontrollera därefter hur många bokstäver som förekommer på samma plats i båda orden.
+*/
+
 /*
 input();
 
@@ -289,7 +335,20 @@ function checkSimilarities(hund, katt) // notera att namnen hund och katt bara �
 end function
 /*
 
-/* TODO app */
+
+
+
+
+
+/* TODO app 
+
+Skriv pseudokod för en enkel todo app där användaren kan:
+
+Se sina todos i en lista
+Lägga till en ny todo
+Ta bort en todo
+*/
+
 /*
 SET varaibeln todos = [..., ..., ...];
 
@@ -339,44 +398,4 @@ Funktion huvudprogram():
 
 */
 
-// Riktig JavaScript-kod för spelet Knock Out, avkommentera play() för att köra spelet på index.html
-/* Knock out */
-//play();
-function play() {
-    let inputApproved = false;
-    let totalScore = 0;
-    let knockOutNmbr = 0;
-    let goalNmbr = 0;
-
-    while (!inputApproved) {
-        knockOutNmbr = parseInt(prompt("Välj ett nummer mellan 6 och 9"));
-        goalNmbr = parseInt(prompt("Välj ett mål"));
-
-        if (knockOutNmbr > 5 && knockOutNmbr < 10 && goalNmbr > 0) {
-            inputApproved = true;
-        }
-    }
-
-    while (totalScore < goalNmbr) {
-        let diceOne = throwDice();
-        let diceTwo = throwDice();
-        let sum = diceOne + diceTwo;
-
-        if (sum === knockOutNmbr) {
-            totalScore -= 3;
-        } else {
-            totalScore += sum;
-        }
-
-        console.log(`Denna runda kastade du ${diceOne} och ${diceTwo}, summan blev ${sum}`);
-        console.log(`Poängställning: ${totalScore}/${goalNmbr}`);
-    }
-
-    console.log("Grattis du har vunnit!");
-}
-
-function throwDice() {
-    let dice = Math.floor(Math.random() * 6) + 1;
-    return dice;
-}
 
